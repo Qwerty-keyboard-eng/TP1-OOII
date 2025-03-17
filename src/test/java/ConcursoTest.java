@@ -30,6 +30,9 @@ public class ConcursoTest {
     public void inscribirFueraFecha() {
         Concursante c = new Concursante("Matias");
         Concurso i = new Concurso(LocalDate.now().minusDays(3), LocalDate.now().minusDays(1), "Concurso1");
-        i.inscribir(c);
+        assertThrows(IllegalArgumentException.class, () -> {
+            i.inscribir(c);
+        });
+
     }
 }
